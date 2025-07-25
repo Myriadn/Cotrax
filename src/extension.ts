@@ -1,5 +1,9 @@
 /*
  * Author: Cotrax
+ * DELETE THIS AFTER PRODUCTION
+ * DONT FORGET DELETE FILES vsc-extension-*
+ * ADJUST CHANGELOG.md
+ * ADJUST README.md
  */
 
 import * as vscode from "vscode";
