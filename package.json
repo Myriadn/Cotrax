@@ -3,6 +3,12 @@
   "displayName": "Cotrax",
   "description": "a code tracker that flex your code time",
   "version": "0.0.1",
+  "publisher": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Myriadn/Cotrax.git"
+  },
+  "icon": "images/cotrax-128x.png",
   "engines": {
     "vscode": "^1.102.0"
   },
