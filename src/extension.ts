@@ -24,9 +24,9 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(myStatusBarItem);
 
 
-    const disposable = vscode.commands.registerCommand('extension.showDashboard', async () => {
-        const htmlPath = path.join(context.extensionPath, 'src', 'index.html');
-
+    const disposableShowDashboard = vscode.commands.registerCommand('extension.showDashboard', async () => {
+        const htmlPath = path.join(context.extensionPath, 'src', 'page', 'index.html');
+        
         if (!fs.existsSync(htmlPath)) {
             vscode.window.showErrorMessage('index.html tidak ditemukan!');
             return;
@@ -36,8 +36,12 @@ export function activate(context: vscode.ExtensionContext) {
         await vscode.env.openExternal(uri); 
     });
 
+    const disposableHello = vscode.commands.registerCommand('cotrax.helloWorld', () => {
+    vscode.window.showInformationMessage('Hello World from Cotrax!');
+    });
 
-    context.subscriptions.push(disposable);
+
+    context.subscriptions.push(disposableShowDashboard , disposableHello);
 }
 
 
