@@ -9,6 +9,7 @@
 import * as vscode from "vscode";
 import * as path from 'path';
 import * as fs from 'fs';
+import { supabase } from './lib/supabaseClient';
 /*
  * Entry point
  * Don't Delete this code
@@ -23,15 +24,24 @@ export function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(myStatusBarItem);
 
-
+    // dashboard
     const disposableShowDashboard = vscode.commands.registerCommand('extension.showDashboard', async () => {
         const htmlPath = path.join(context.extensionPath, 'src', 'page', 'index.html');
         
         if (!fs.existsSync(htmlPath)) {
-            vscode.window.showErrorMessage('index.html tidak ditemukan!');
+            vscode.window.showErrorMessage('html file not found');
             return;
         }
 
+        // supabase 
+        const { data, error } = await supabase.from('projects').select('*');
+        if (error) {
+            console.error(error);
+            vscode.window.showErrorMessage('failed to connect supabase');
+        } else {
+            console.log('Data project:', data);
+        }
+        
         const uri = vscode.Uri.file(htmlPath);
         await vscode.env.openExternal(uri); 
     });
