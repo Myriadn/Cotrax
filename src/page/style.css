@@ -1,0 +1,78 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 900px;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 128px;
+  image-rendering: pixelated;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 10px 0 0 0;
+  color: black;
+}
+
+.content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.chart-box {
+  background: white;
+  border: 1px dashed black;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.project-list {
+  flex: 1;
+  background: white;
+  border: 1px solid black;
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 300px;
+}
+
+.project-title {
+  font-weight: bold;
+  margin: 10px 0 5px;
+  text-decoration: underline;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px dotted black;
+  font-size: 0.95em;
+}
+
+.file-icon {
+  margin-right: 8px;
+}
