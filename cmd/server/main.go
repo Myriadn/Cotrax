@@ -8,32 +8,51 @@ import (
 
 	"github.com/Myriadn/Cotrax/internal/api"
 	"github.com/Myriadn/Cotrax/internal/database"
+	"github.com/Myriadn/Cotrax/internal/services"
 	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"
 )
 
 /*
  * Main function is placed on top
- * BEFORE START THE SERVER, DON'T FORGET TO SET .ENV CONFIGURATION
- * if not that's okay, we will set it to default
+ * if you're not reading README.md first
+ * please do so.
  */
 func main() {
+	// Load environment variables
 	godotenv.Load()
 
-	db, err := database.ConnectDB()
-	if err != nil {
-		log.Fatal("Okay problem with database connection", err)
-	}
-
+	// just makin it variable
 	port := os.Getenv("PORT")
 	defaultPort := "8080"
 	
 	addr := ":" + port
 
+	// trying to connect to the database
+	db, err := database.ConnectDB()
+	if err != nil {
+		log.Fatal("Okay problem with database connection", err)
+	}
+	defer db.Close()
+
+	// Instance
+	service := &services.Services{
+		DB: db,
+	}
+
+	server := &api.APIServer{
+		Service: service,
+	}
+
 	// its just a simple router
 	router := chi.NewRouter()
-	router.Get("/", api.RootHandler)
-	router.Post("/api/v1/log", api.TimeLogsHandler)
+	// router.Post("/api/v1/log", api.TimeLogsHandler)
+	router.Post("/api/v1/projects", server.CreateProjectHandler)
+	router.Get("/api/v1/projects", server.GetAllProjectsHandler)
+	router.Post("/api/v1/files", server.CreateFileHandler)
+	router.Get("/api/v1/files", server.GetAllFilesHandler)
+	router.Post("/api/v1/time_logs", server.CreateTimeLogHandler)
+	router.Get("/api/v1/time_logs", server.GetAllTimeLogsHandler)
 
 	if port == "" {
 		port = defaultPort
@@ -48,6 +67,5 @@ func main() {
 	if error != nil {
 		log.Fatal(error)
 	}
-
-	defer db.Close()
+	
 }

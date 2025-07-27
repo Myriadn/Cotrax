@@ -4,8 +4,8 @@ import "time"
 
 type Projects struct {
 	ID          int64  `json:"id"`
-	ProjectName string `json:"name"`
-	ProjectPath string `json:"path"`
+	ProjectName string `json:"project_name"`
+	ProjectPath string `json:"project_path"`
 	CreatedAt   time.Time `json:"created_at"`
 }
 
