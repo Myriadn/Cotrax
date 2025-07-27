@@ -13,13 +13,13 @@ This BackEnd service was created with Golang. In short, this is a service for th
 
 If you want to run this backend locally, you must first:
 
-### 1. Please make sure to install [Golang](https://go.dev/doc/install)
+1. Please make sure to install [Golang](https://go.dev/doc/install)
 
-### 2. Install [PostgreSQL](https://www.postgresql.org/) or you can use Cloud Databases Service PostgreSQL like [Supabase](https://supabase.com/). Then create a database, for example named CotraxAPI.
+2. Install [PostgreSQL](https://www.postgresql.org/) or you can use Cloud Databases Service PostgreSQL like [Supabase](https://supabase.com/). Then create a database, for example named CotraxAPI.
 
-### 3. This is for database, we use migrate. so please install [Golang Migrate Tools](https://github.com/golang-migrate/migrate/releases)
+3. This is for database, we use migrate. so please install [Golang Migrate Tools](https://github.com/golang-migrate/migrate/releases)
 
-### 4. Make sure Golang, PostgreSQL and Golang Migrate Tools can be called in the terminal.
+4. Make sure Golang, PostgreSQL and Golang Migrate Tools can be called in the terminal.
 
 If you have already completed the previous step, you can now perform several setups for this backend:
 
