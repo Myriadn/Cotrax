@@ -70,7 +70,7 @@ go run ./cmd/server/main.go
 
 ## Testing Route
 
-Please Check out POSTman folders, we actually test it in Postman App.
+Please Check out POSTman folders, we actually test it in Postman App. and it has also been deployed with the [Render](https://render.com/) service with the Endpoint <b>https://cotrax.onrender.com</b>
 
 ### End
 
