@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cotrax Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="cotrax-128x.png" alt="Cotrax Logo" class="logo" />
+    </header>
+
+    <main class="content">
+      <div class="chart-box">
+        <canvas id="pieChart" width="300" height="300"></canvas>
+        <script>
+    const ctx = document.getElementById('pieChart').getContext('2d');
+    const data = {
+      labels: ['My First Project', 'gam11222', 'incredible gassy', 'test11'],
+      datasets: [{
+        label: 'code-playtime',
+        data: [135, 0, 110, 0],
+        backgroundColor: ['#00FF00', '#00AA00', '#007700'],
+        hoverOffset: 20
+      }]
+    };
+    const config = {
+      type: 'pie',
+      data: data,
+      options: {
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context) => {
+                const label = context.label || '';
+                const value = context.raw;
+                const hours = Math.floor(value / 60);
+                const minutes = value % 60;
+
+                const hourStr = hours > 0 ? `${hours}h` : '';
+                const minStr = minutes > 0 ? `${minutes}m` : '';
+                const timeStr = [hourStr, minStr].filter(Boolean).join(' ');
+
+                return `${label}: ${timeStr || '0m'}`;
+              }
+            }
+          }
+        }
+      }
+    };
+    new Chart(ctx, config);
+  </script>
+      </div>
+
+      <div class="project-list">
+        <h2>My Projects</h2>
+
+        
+            <div class="project">
+                <p class="project-title">My First Project</p>
+                
+                <div class="file-item">
+                    <span class="file-icon"></span>
+                    <span>main.py</span>
+                    <span class="time">1h 30m</span>
+                </div>
+            
+                <div class="file-item">
+                    <span class="file-icon"></span>
+                    <span>utils.js</span>
+                    <span class="time">45m</span>
+                </div>
+            
+            </div>
+        
+            <div class="project">
+                <p class="project-title">incredible gassy</p>
+                
+                <div class="file-item">
+                    <span class="file-icon"></span>
+                    <span>index.html</span>
+                    <span class="time">1h 30m</span>
+                </div>
+            
+                <div class="file-item">
+                    <span class="file-icon"></span>
+                    <span>style.css</span>
+                    <span class="time">20m</span>
+                </div>
+            
+            </div>
+        
+            <div class="project">
+                <p class="project-title">gam11222</p>
+                
+            </div>
+        
+            <div class="project">
+                <p class="project-title">test11</p>
+                
+            </div>
+        
+
+      </div>
+    </main>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>

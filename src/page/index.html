@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cotrax Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="style.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="cotrax-128x.png" alt="Cotrax Logo" class="logo" />
+    </header>
+
+    <main class="content">
+      <div class="chart-box">
+        <canvas id="pieChart" width="300" height="300"></canvas>
+        <script>{{chartScript}}</script>
+      </div>
+
+      <div class="project-list">
+        <h2>My Projects</h2>
+
+        {{projectList}}
+
+      </div>
+    </main>
+  </div>
+  
+  <script src="main.js"></script>
+</body>
+</html>
