@@ -24,7 +24,14 @@ const config = {
           label: (context) => {
             const label = context.label || '';
             const value = context.raw;
-            return `${label}: ${Math.floor(value / 60)}h ${value % 60}m`;
+            const hours = Math.floor(value / 60);
+            const minutes = value % 60;
+
+            const hourStr = hours > 0 ? `${hours}h` : '';
+            const minStr = minutes > 0 ? `${minutes}m` : '';
+            const timeStr = [hourStr, minStr].filter(Boolean).join(' ');
+
+            return `${label}: ${timeStr}`;
           }
         }
       }

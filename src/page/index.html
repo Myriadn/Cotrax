@@ -16,36 +16,18 @@
     <main class="content">
       <div class="chart-box">
         <canvas id="pieChart" width="300" height="300"></canvas>
+        <script>{{chartScript}}</script>
       </div>
 
       <div class="project-list">
-        <h2>my projects</h2>
-        <div class="project">
-          <p class="project-title">{{projects}}</p>
-          <div class="file-item">
-            <span class="file-icon"></span>
-            <span>main.py</span>
-            <span class="time">1h 32m</span>
-          </div>
-          <div class="file-item">
-            <span class="file-icon"></span>
-            <span>readme.md</span>
-            <span class="time">12m</span>
-          </div>
-        </div>
+        <h2>My Projects</h2>
 
-        <div class="project">
-          <p class="project-title">face-recog</p>
-          <div class="file-item">
-            <span class="file-icon"></span>
-            <span>detect.py</span>
-            <span class="time">45m</span>
-          </div>
-        </div>
+        {{projectList}}
+
       </div>
     </main>
   </div>
-
+  
   <script src="main.js"></script>
 </body>
 </html>
