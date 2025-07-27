@@ -24,7 +24,7 @@ func main() {
 
 	// just makin it variable
 	port := os.Getenv("PORT")
-	defaultPort := "8080"
+	defaultPort := "7000" // it's a testing port
 	
 	addr := ":" + port
 

@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "34cbab58-4f03-4fec-b4ba-e8cbf0a56b39",
+		"name": "Cotrax API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "43384067"
+	},
+	"item": [
+		{
+			"name": "Create Project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"project_name\": \"SEA Catering App\",\r\n    \"project_path\": \"/Users/myriadn/dev/sea-catering-app\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:7000/api/v1/projects"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Project",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:7000/api/v1/projects"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Files",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"project_id\": 1,\r\n    \"filename\": \"handlers.go\",\r\n    \"filepath\": \"internal/api/handlers.go\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:7000/api/v1/files"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Files",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:7000/api/v1/files"
+			},
+			"response": []
+		},
+		{
+			"name": "Send Time Logs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Dapatkan waktu saat ini\r",
+							"let startTime = new Date();\r",
+							"\r",
+							"// Buat waktu untuk 1 jam di masa depan dari sekarang\r",
+							"let futureTime = new Date();\r",
+							"futureTime.setHours(startTime.getHours() + 1);\r",
+							"\r",
+							"// Simpan kedua waktu tersebut sebagai environment variable di Postman\r",
+							"// .toISOString() akan mengubahnya menjadi format yang bisa diterima Go\r",
+							"pm.environment.set(\"start_time_future\", startTime.toISOString());\r",
+							"pm.environment.set(\"end_time_future\", futureTime.toISOString());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"file_id\": 1,\r\n    \"start_time\": \"{{start_time_future}}\",\r\n    \"end_time\": \"{{end_time_future}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:7000/api/v1/time_logs"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Time Logs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:7000/api/v1/time_logs"
+			},
+			"response": []
+		}
+	]
+}

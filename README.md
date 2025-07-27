@@ -67,3 +67,11 @@ go run ./cmd/server/main.go
 
 - We actually use [Supabase PostgreSQL](https://supabase.com/) for Databases Cloud for this App. Some of you may want to use Supabase as well, or you can use a local one, but outside of PostgreSQL, you can configure it yourself.
 - If you accidentally run this application directly, it will usually change the value to the default except for DB_URL. Also, make sure that DB_URL is not empty so that this application runs properly.
+
+## Testing Route
+
+Please Check out POSTman folders, we actually test it in Postman App.
+
+### End
+
+You can use this code, or edit this code, and it's up to you, just don't forget to mention us, that's all. Thank you.
