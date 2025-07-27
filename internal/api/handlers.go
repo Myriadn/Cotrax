@@ -12,16 +12,31 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Hello, welcome to the Cotrax API!")
 }
 
-func TestHandler(w http.ResponseWriter, r *http.Request) {
+func TimeLogsHandler(w http.ResponseWriter, r *http.Request) {
 	var req models.Time_Logs
-
-	if json.NewDecoder(r.Body).Decode(&req) != nil {
-		http.Error(w, " :( Error", http.StatusBadRequest)
+	
+	err := json.NewDecoder(r.Body).Decode(&req)
+	if err != nil {
+		// fmt.Println("Can't decode JSON:", err)
+		http.Error(w, "Something went wrong :(", http.StatusBadRequest)
 		return
 	}
+	
+	// fmt.Println("Got you JSON:", req)
 
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	fmt.Fprintf(w, "ID: %d, FilesID: %d, StartTime: %s, EndTime: %s, DurationSeconds: %d, CreatedAt: %s",
-		req.ID, req.FilesID, req.StartTime, req.EndTime, req.DurationSeconds, req.CreatedAt)
+	
+	response := models.ResponseAPI{
+		Status: "Cool",
+		Message: "It works!",
+		Data: req,
+	}
 
+	err = json.NewEncoder(w).Encode(response)
+	if err != nil {
+		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
+		return
+	}
+	
 }
