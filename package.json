@@ -2,8 +2,8 @@
   "name": "cotrax",
   "displayName": "Cotrax",
   "description": "a code tracker that flex your code time",
-  "version": "0.0.1",
-  "publisher": "",
+  "version": "0.0.2",
+  "publisher": "Cotrax",
   "repository": {
     "type": "git",
     "url": "https://github.com/Myriadn/Cotrax.git"

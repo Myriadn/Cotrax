@@ -6,8 +6,9 @@
 import axios from "axios";
 import { Projects, Files, Time_Logs } from "../models/models";
 
+// this base URL can be changed to yours
 const apiClient = axios.create({
-  baseURL: "http://localhost:7000/api/v1", // || "https://cotrax.onrender.com/api/v1"
+  baseURL: "https://cotrax.onrender.com/api/v1", // "https://cotrax.onrender.com/api/v1" or "http://localhost:7000/api/v1"
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
