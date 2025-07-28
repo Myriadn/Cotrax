@@ -89,7 +89,7 @@ This error does not affect the extension’s functionality. It simply means that
 We only release on this Hackaton Fest. We dont know if we will continue this project in the future.
 
 
-### 1.0.0
+### v0.0.1
 
 Initial release of Cotrax
 
