@@ -23,14 +23,8 @@ If you want to run this backend locally, you must first:
 
 If you have already completed the previous step, you can now perform several setups for this backend:
 
+
 ### 1. Create .env files in root folder
-
-```sh
-git clone https://github.com/Myriadn/Cotrax.git
-cd Cotrax
-```
-
-### 2. Create .env files in root folder
 
 ```sh
 PORT=
@@ -39,13 +33,13 @@ DB_DRIVER=
 DB_URL=
 ```
 
-### 3. Install dependency
+### 2. Install dependency
 
 ```sh
 go mod tidy
 ```
 
-### 4. Run Database Migration
+### 3. Run Database Migration
 
 ```sh
 migrate -path db/migrations -database "$DB_URL" up
@@ -57,7 +51,7 @@ or
 migrate -path db/migrations -database "postgres://[user]:[password]@[host]:[port]/[database_name]" up
 ```
 
-### 5. You can run the BackEnd
+### 4. You can run the BackEnd
 
 ```sh
 go run ./cmd/server/main.go
@@ -67,6 +61,11 @@ go run ./cmd/server/main.go
 
 - We actually use [Supabase PostgreSQL](https://supabase.com/) for Databases Cloud for this App. Some of you may want to use Supabase as well, or you can use a local one, but outside of PostgreSQL, you can configure it yourself.
 - If you accidentally run this application directly, it will usually change the value to the default except for DB_URL. Also, make sure that DB_URL is not empty so that this application runs properly.
+
+## Databases Schematics
+<p align="center">
+  <img src="./postman/cotrax-supabase.png" alt="Database Schematic" width="300"/>
+</p>
 
 ## Testing Route
 

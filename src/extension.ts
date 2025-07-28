@@ -45,14 +45,6 @@ export function activate(context: vscode.ExtensionContext) {
     "extension.showDashboard",
     async () => {
       try {
-        // const db = await open({
-        //   filename: path.join(context.extensionPath, "src", "lib", "cotrax.db"),
-        //   driver: sqlite3.Database,
-        // });
-
-        // const projects = await db.all("SELECT * FROM projects");
-        // const files = await db.all("SELECT * FROM files");
-        // const timeLogs = await db.all("SELECT * FROM time_logs");
 
         const projects = await api.getAllProjects();
         const files = await api.getAllFiles();
@@ -85,8 +77,7 @@ export function activate(context: vscode.ExtensionContext) {
           vscode.window.showErrorMessage("html file not found");
           return;
         }
-
-        // const projectDurations = await getProjectDurations(db);
+        
         const chartScript = renderChartScript(projectDurations);
 
         let rawHtml = fs.readFileSync(htmlPath, "utf8");
@@ -187,7 +178,7 @@ async function stopTracking() {
 }
 
 async function handleFileChange(document: vscode.TextDocument) {
-  if (document.uri.scheme !== "file") return;
+  if (document.uri.scheme !== "file") {return;}
 
   // stop tracking before changing file
   stopTracking();

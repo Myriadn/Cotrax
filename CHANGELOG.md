@@ -1,9 +1,7 @@
 # Change Log
 
-All notable changes to the "cotrax" extension will be documented in this file.
+This is are the list of changes of this extension 
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.0.1] 2025/07/28
 
-## [Unreleased]
-
-- Initial release
+- Initial release of Cotrax

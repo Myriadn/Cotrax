@@ -13,74 +13,86 @@ Cotrax is a Visual Studio Code extension designed to automatically track the tim
 
 ## Features
 
-1. Automatic Tracking
-   Time is automatically recorded when you are active in VS Code.
-
-2. Visual Dashboard
-   View details of your coding time with a dashboard that displays a list of projects and pie charts.
-
-<!-- Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow. -->
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+- **Automatic Tracking:** Time is recorded automatically while you’re active inside VS Code.
+- **Visual Dashboard:** View detailed stats of your coding time with a dashboard that shows project lists and a pie chart.
+- **Backend System with Databases:**  Save and Log your coding acitivties to the databases
 
 ---
 
-## Following extension guidelines
+## Technologies Used
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+### Frontend (VS Code Extension)
+- TypeScript  
+- SQLite3 (for initial/demo local storage)
 
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+### Backend (API)
+- Go  
+- Chi (Router)  
+- PostgreSQL (via Supabase)  
+- golang-migrate  
 
-## Working with Markdown
+### Other Tools
+- Postman (for API testing)
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+---
 
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-- Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-- Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+## Requirements
 
-## For more information
+1. Install [Node.js](https://nodejs.org/en/download), then install the global depedency for extention development
+```bash
+npm install -g yo generator-code
+```
 
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+2. Clone the repository
+```sh
+git clone https://github.com/Myriadn/Cotrax.git
+cd Cotrax
+```
+
+3. Install all the requirement depedency
+```bash
+npm install
+```
+
+4. Setup [Backend](cotrax_api/README.md) until it runs
+
+5. Run or test the Extension by pressing F5 
+
+---
+
+## Known Issues
+
+You can use this extension with our built-in backend, or run the backend locally on your machine. You can configure the API endpoint in the provided [configuration file](./src/api/apiService.ts), and all available endpoints are already set up. But sometimes there is some issues like:
+
+- Axios timeout error (ECONNABORTED)
+When attempting to register a project or file with the Cotrax API, you may encounter the following error message:
+```bash
+AxiosError: timeout of 10000ms exceeded
+code: 'ECONNABORTED'
+```
+This typically indicates that the request to the remote API endpoint failed to respond in time.
+
+- Failed to register project/file
+An error popup may appear:
+```bash
+Could not register project/file with Cotrax API.
+Source: Cotrax
+```
+This issue is often related to network problems, unreachable API endpoint, or long response delays.
+
+This error does not affect the extension’s functionality. It simply means that new data could not be inserted into the database because it already exists.
+
+---
+
+## Release Notes
+
+We only release on this Hackaton Fest. We dont know if we will continue this project in the future.
+
+
+### 1.0.0
+
+Initial release of Cotrax
+
+---
 
 **Enjoy!**
